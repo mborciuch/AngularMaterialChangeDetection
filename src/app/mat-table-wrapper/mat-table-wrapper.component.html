@@ -1,0 +1,32 @@
+<table mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  // Remove trackBy to cause error
+  <ng-container *ngFor="let column of _columnConfig | keyvalue; trackBy: trackByFn">
+    <ng-container matColumnDef="{{column.key}}">
+      <th mat-header-cell *matHeaderCellDef> {{column.value.header}} </th>
+      <td [style.background-color]="column.value.backgroundColor" mat-cell *matCellDef="let element"> {{element[column.key]}} </td>
+    </ng-container>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="_displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: _displayedColumns;"></tr>
+</table>
+
+<!--<table mat-table [dataSource]="dataSource()" class="mat-elevation-z8">-->
+
+
+<!--  @for(column of _columnConfig | keyvalue; track column.key) {-->
+<!--    <ng-container matColumnDef="{{column.key}}">-->
+<!--      <th mat-header-cell *matHeaderCellDef> {{column.value.header}} </th>-->
+<!--      <td [style.background-color]="column.value.backgroundColor" mat-cell *matCellDef="let element"> {{element[column.key]}} </td>-->
+<!--    </ng-container>-->
+
+<!--  }-->
+<!--  <tr mat-header-row *matHeaderRowDef="_displayedColumns"></tr>-->
+<!--  <tr mat-row *matRowDef="let row; columns: _displayedColumns;"></tr>-->
+<!--</table>-->
+
